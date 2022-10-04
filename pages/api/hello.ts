@@ -7,7 +7,7 @@ type Data = { [k: string]: any; }
 
 const client = new Client(
   process.env.NODE_ENV === 'production' ?
-    'argocd-helm-example-service.argocd-helm-example-service.svc.cluster.local' :
+    'argocd-helm-example-service.argocd-helm-example-service.svc.cluster.local:80' :
     '0.0.0.0:9000',
   credentials.createInsecure(),
 )
