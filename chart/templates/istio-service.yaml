@@ -16,4 +16,4 @@ spec:
       - destination:
           port:
             number: 80
-          host: argocd-helm-example-service.argocd-helm-example-service.svc.cluster.local
+          host: argocd-web-service.argocd-web-service.svc.cluster.local
