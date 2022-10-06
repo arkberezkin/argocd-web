@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-redis
+  name: redis-web
   namespace: argocd-web-service
   labels:
-    app: web-redis
+    app: redis-web
     version: v1
 spec:
   replicas: 1
