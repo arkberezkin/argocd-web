@@ -37,8 +37,8 @@ spec:
             protocol: TCP
         livenessProbe:
           tcpSocket:
-            port: {{ .Values.global.service.portName }}
+            port: redis
         readinessProbe:
           tcpSocket:
-            port: {{ .Values.global.service.portName }}
+            port: redis
       restartPolicy: Always
