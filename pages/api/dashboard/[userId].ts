@@ -36,7 +36,7 @@ const getRedisClient = async (): Promise<RedisClientType> => {
   if (!redisClient) {
     redisClient = createClient({
       url: process.env.NODE_ENV === 'production' ?
-        'redis://redis-web.argocd-docs-service.svc.cluster.local:6379' :
+        'redis://redis-web.argocd-web-service.svc.cluster.local:6379' :
         undefined,
     });
     await redisClient.connect();
