@@ -20,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        app: web-redis
+        app: redis-web
         app.kubernetes.io/instance: redis-web
         app.kubernetes.io/name: service
         app.kubernetes.io/version: 1.16.0
