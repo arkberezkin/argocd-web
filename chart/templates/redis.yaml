@@ -10,7 +10,8 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis
+      app.kubernetes.io/instance: redis-web
+      app.kubernetes.io/name: service
   strategy:
     type: RollingUpdate
     rollingUpdate:
