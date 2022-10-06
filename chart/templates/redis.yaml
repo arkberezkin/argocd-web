@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-redis
+  namespace: argocd-web-service
+  labels:
+    app: web-redis
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: web-redis
+        app.kubernetes.io/instance: redis-web
+        app.kubernetes.io/name: service
+        app.kubernetes.io/version: 1.16.0
+        helm.sh/chart: service-0.1.10
+        pod-template-hash: 5d98cb74b4
+        version: v1
+    spec:
+      containers:
+      - name: redis
+        image: localhost:32000/redis:7.0.5
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: redis
+            containerPort: 6379
+            protocol: TCP
+        livenessProbe:
+          tcpSocket:
+            port: {{ .Values.global.service.portName }}
+        readinessProbe:
+          tcpSocket:
+            port: {{ .Values.global.service.portName }}
+      restartPolicy: Always
