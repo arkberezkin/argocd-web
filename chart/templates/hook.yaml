@@ -16,8 +16,8 @@ spec:
       - name: issuu-file-update
         image: localhost:32000/tester:0.0.1
         imagePullPolicy: IfNotPresent
-        command: [ "grpcurl" ]
-        args: [ "-plaintext", "-d", "{ \"name\": \"issuu-file\" }", "argocd-helm-example-service.argocd-helm-example-service.svc.cluster.local:80", "hello.HelloService.Hello" ]
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "grpcurl -plaintext -d '{ \"name\": \"issuu-file\" }' argocd-helm-example-service.argocd-helm-example-service.svc.cluster.local:80 hello.HelloService.Hello && curl -sf -XPOST http://127.0.0.1:15020/quitquitquit" ]
       restartPolicy: Never
   backoffLimit: 2
 
