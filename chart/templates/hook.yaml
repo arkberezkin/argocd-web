@@ -14,7 +14,7 @@ spec:
         imagePullPolicy: IfNotPresent
         command: [ "/bin/bash", "-c", "--" ]
         args: [ "grpcurl -plaintext -d '{ \"name\": \"issuu-file\" }' argocd-helm-example-service.argocd-helm-example-service.svc.cluster.local:80 hello.HelloService.Hello" ]
-        restartPolicy: Never
+      restartPolicy: Never
   backoffLimit: 2
 
 
